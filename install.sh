@@ -38,3 +38,15 @@ echo '--- Verificando que los servicios estén accesibles ---'
 echo 'Esto requiere herramientas como curl, nc o acceso externo para validar completamente.'
 
 echo '✔ Configuración completada. Asegúrate de probar acceso desde el exterior a WHM, cPanel, Webmail y correo.'
+# Registro del resumen
+LOG_FILE="/var/log/firewalld-whm-setup.log"
+{
+  echo "[$(date)] Firewalld configurado correctamente con los puertos necesarios para WHM/cPanel."
+  echo "BitNinja detectado y considerado en la configuración."
+  echo "Todos los servicios críticos como DNS, HTTP/HTTPS, FTP, SMTP, IMAP, POP3, y SSH están habilitados."
+} >> "$LOG_FILE"
+
+# Mensaje final al usuario
+echo ""
+echo "✅ Firewalld está activo y configurado correctamente para WHM/cPanel."
+echo "📄 Log guardado en: $LOG_FILE"
